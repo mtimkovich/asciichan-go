@@ -1,0 +1,10 @@
+#art {
+  height: 100px;
+  width: 400px;
+  font-family: monospace;
+}
+
+#error {
+  color: red;
+}
+

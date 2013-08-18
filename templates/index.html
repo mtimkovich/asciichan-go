@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>/ascii/</title>
+<link rel="stylesheet" href="/static/format.css">
+</head>
+
+<body>
+
+<h1>/ascii/</h1>
+
+<form method="post">
+  <table>
+    <tr>
+      <label>
+        <td>title</td>
+        <td><input type="text" name="title" value="{{.FormTitle}}"></td>
+      </label>
+    </tr>
+
+    <tr>
+      <label>
+        <td>art</td>
+        <td><textarea id="art" name="art">{{.FormArt}}</textarea></td>
+      </label>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td><div id="error">{{.Error}}</div></td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td><input type="submit"></td>
+    </tr>
+
+  </table>
+</form>
+
+{{range .PrettyArts}}
+  <b>{{.Title}}</b><br>
+  <pre>{{.Art}}</pre><br>
+{{end}}
+
+</body>
+</html>

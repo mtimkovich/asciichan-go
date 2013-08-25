@@ -8,12 +8,12 @@
 
 <h1>/ascii/</h1>
 
-<form method="post">
+<form method="post" id="artForm">
   <table>
     <tr>
       <label>
         <td>title</td>
-        <td><input type="text" name="title" value="{{.FormTitle}}"></td>
+        <td><input type="text" id="title" name="title" value="{{.FormTitle}}"></td>
       </label>
     </tr>
 
@@ -41,6 +41,27 @@
   <b>{{.Title}}</b><br>
   <pre>{{.Art}}</pre><br>
 {{end}}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+/*
+function isBlank(input) {
+  input = input.trim();
+
+  if (input.length == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+*/
+
+$("#artForm").submit(function() {
+    $("#error").val("title and art cannot be blank");
+    return false;
+});
+</script>
 
 </body>
 </html>

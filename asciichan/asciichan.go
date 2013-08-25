@@ -90,6 +90,8 @@ func Root(w http.ResponseWriter, r *http.Request) {
 
         if isBlank(data.FormTitle) || isBlank(data.FormArt) {
             data.Error = "title and art cannot be blank"
+            
+            renderFront(c, w, data)
         } else {
             a := Art{
                 Title: data.FormTitle,
@@ -104,13 +106,11 @@ func Root(w http.ResponseWriter, r *http.Request) {
                 return
             }
 
-            // Reset data struct to clear form fields
-            data = nil
-
             c.Infof("INSERT INTO Art (Title, Art, Created) values ('%v', %v', %v)", a.Title, a.Art, a.Created)
+
+            http.Redirect(w, r, "/", http.StatusFound)
         }
 
-        renderFront(c, w, data)
     }
 }
 
